@@ -27,3 +27,46 @@ for word in my_text:
 
 my_text = "Bananas are great source of Potassium"
 print("The letter a appears", my_text.count("a"), "times")
+
+print("-"*50)
+
+#-----Advanced Exercises-----
+#--Task--
+number = int(input("Enter an integer: "))
+for i in range(1, number + 1):
+    print(" "*(number - i) + (str(i)*i))
+
+#--Task--
+number = int(input("Enter an integer: "))
+if number < 0:
+    number *= -1
+print(f"The first digit of {number} is {(str(number))[0]}")
+
+#--Task--
+def SelectionSort(list):
+    difference = 0
+    index = -1
+    start = 0
+    for i in range(len(list)):
+        for j in range(start, len(list)):
+            if list[i] > list[j]:
+                print("--", list[i])
+                print("--", list[j])
+                if abs(list[i] - list[j]) > difference:
+                    #print(difference)
+                    #print(index)
+                    difference = abs(list[i] - list[j])
+                    index = j
+        start += 1
+        temp = list[i]
+        list[i] = list[index]
+        list[index] = temp
+        difference = 0
+        print(list)
+    return list
+
+
+list = [29, 72, 98, 13, 87, 66, 52, 51, 36]
+list = [29 , 13, 65, 64]
+list = SelectionSort(list)
+print(list)
