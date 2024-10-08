@@ -59,7 +59,7 @@ def selection_sort(list):
             if list[i] > list[j]:
                 if abs(list[i] - list[j]) > difference:
                     #print("--", list[i]) #This is the current item it's looking at
-                    #print("--", list[j], "\n") #This is the item it is being compared to
+                    #print("--", list[j], "\n") #These are the items it is being compared to
                     difference = abs(list[i] - list[j])
                     index = j
         if difference > 0: #Check if a swap is required
