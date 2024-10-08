@@ -43,30 +43,36 @@ if number < 0:
 print(f"The first digit of {number} is {(str(number))[0]}")
 
 #--Task--
-def SelectionSort(list):
-    difference = 0
-    index = -1
-    start = 0
-    for i in range(len(list)):
-        for j in range(start, len(list)):
-            if list[i] > list[j]:
-                print("--", list[i])
-                print("--", list[j])
-                if abs(list[i] - list[j]) > difference:
-                    #print(difference)
-                    #print(index)
-                    difference = abs(list[i] - list[j])
-                    index = j
-        start += 1
-        temp = list[i]
-        list[i] = list[index]
-        list[index] = temp
-        difference = 0
-        print(list)
+import random as rand
+
+def fill_with_random_vals(list, no_of_values):
+    list.clear()
+    for i in range(no_of_values):
+        list.append(rand.randint(1,100))
     return list
 
+def selection_sort(list):
+    difference = 0
+    index = -1
+    for i in range(len(list)):
+        for j in range(i, len(list)):
+            if list[i] > list[j]:
+                if abs(list[i] - list[j]) > difference:
+                    #print("--", list[i]) #This is the current item it's looking at
+                    #print("--", list[j], "\n") #This is the item it is being compared to
+                    difference = abs(list[i] - list[j])
+                    index = j
+        if difference > 0: #Check if a swap is required
+            temp = list[i]
+            list[i] = list[index]
+            list[index] = temp
+            difference = 0
+            #print(list) #Displays the list after each swap
+    return list
 
-list = [29, 72, 98, 13, 87, 66, 52, 51, 36]
-list = [29 , 13, 65, 64]
-list = SelectionSort(list)
-print(list)
+#list = [29, 72, 98, 13, 87, 66, 52, 51, 36]
+list = []
+list = fill_with_random_vals(list, 10)
+print(list) #Before sort
+list = selection_sort(list)
+print(list) #After sort
